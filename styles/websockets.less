@@ -3,20 +3,19 @@
 
 .websockets
 {
-    background: @pane-content-background-color;
+    background: @pane-background-color;
     display: flex;
     flex-direction: column;
 
     .thead
     {
         display: flex;
-        border-bottom: 1px solid @pane-border-color;
-        background: @pane-background-color;
+        border-bottom: 1px solid @header-border-color;
+        background: @header-background-color;
 
         .td
         {
             line-height: 24px;
-            border-right: 1px solid @pane-border-color;
             flex: 1;
             font-size: 11px;
             color: @text-color-subtle;
@@ -45,11 +44,8 @@
         .tr
         {
             display: flex;
-
-            &:nth-child(even)
-            {
-                background: lighten(@pane-content-background-color, 3%);
-            }
+            height: 25px;
+            border-bottom: 1px solid fade(@header-border-color, 50%);
 
             .td
             {
