@@ -33,14 +33,18 @@
         }
     }
 
-    .websockets-list
-    {
-        flex: 1;
-        overflow: auto;
-    }
-
     .via-table
     {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .tbody
+        {
+            flex: 1;
+            overflow: auto;
+        }
+
         .tr
         {
             display: flex;
