@@ -4,40 +4,40 @@
 .websockets
 {
     background: @pane-background-color;
-    display: flex;
-    flex-direction: column;
-
-    .thead
-    {
-        display: flex;
-        border-bottom: 1px solid @header-border-color;
-        background: @header-background-color;
-
-        .td
-        {
-            line-height: 24px;
-            flex: 1;
-            font-size: 11px;
-            color: @text-color-subtle;
-            padding: 0 10px;
-
-            &:last-child
-            {
-                border-right: 0;
-            }
-
-            &.uri
-            {
-                flex: 3;
-            }
-        }
-    }
 
     .via-table
     {
+        height: 100%;
         display: flex;
         flex-direction: column;
-        height: 100%;
+
+        .thead
+        {
+            .td:first-child
+            {
+                padding-left: 30px;
+                position: relative;
+
+                &::before
+                {
+                    width: 14px;
+                    height: 12px;
+                    content: "";
+                    background: url('via://websockets/images/connections.svg') 1px 2px no-repeat;
+                    background-size: 12px auto;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 8px;
+                    margin: auto 0;
+                }
+            }
+
+            .td:last-child
+            {
+                text-align: left;
+            }
+        }
 
         .tbody
         {
@@ -50,6 +50,29 @@
             display: flex;
             height: 25px;
             border-bottom: 1px solid fade(@header-border-color, 50%);
+            position: relative;
+
+            &::before
+            {
+                width: 8px;
+                height: 8px;
+                border-radius: 4px;
+                background: @text-color-subtle;
+                content: "";
+                position: absolute;
+                top: 8px;
+                left: 11px;
+            }
+
+            &.websocket-connected::before
+            {
+                background: @primary-color-up;
+            }
+
+            &.websocket-disconnected::before
+            {
+                background: @primary-color-down;
+            }
 
             .td
             {
@@ -61,11 +84,61 @@
                 white-space: nowrap;
                 text-overflow: ellipsis;
 
-                &.uri
+                &:first-child
                 {
-                    flex: 3;
+                    padding-left: 30px;
+                }
+
+                &:last-child
+                {
+                    color: @text-color-subtle;
                 }
             }
+        }
+    }
+}
+
+.websockets-status
+{
+    display: flex;
+    align-items: center;
+    background-size: 12px auto;
+    background-repeat: no-repeat;
+    font-weight: 700;
+
+    .websockets-status-icon
+    {
+        display: block;
+        margin-right: 6px;
+    }
+
+    &.websockets-connected
+    {
+        color: @primary-color-up;
+
+        .websockets-status-icon
+        {
+            fill: @primary-color-up;
+        }
+    }
+
+    &.websockets-partially-connected
+    {
+        color: @background-color-warning;
+
+        .websockets-status-icon
+        {
+            fill: @background-color-warning;
+        }
+    }
+
+    &.websockets-disconnected
+    {
+        color: @primary-color-down;
+
+        .websockets-status-icon
+        {
+            fill: @primary-color-down;
         }
     }
 }

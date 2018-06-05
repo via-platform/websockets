@@ -1,8 +1,8 @@
 '.platform-darwin':
-  'cmd->': 'websockets:toggle'
+  'cmd->': 'websockets:open'
 
 '.platform-win32':
-  'ctrl->': 'websockets:toggle'
+  'ctrl->': 'websockets:open'
 
 '.platform-linux':
-  'ctrl->': 'websockets:toggle'
+  'ctrl->': 'websockets:open'
